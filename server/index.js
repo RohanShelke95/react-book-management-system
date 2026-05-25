@@ -1,3 +1,4 @@
+// server/index.js
 const jsonServer = require('json-server');
 const server = jsonServer.create();
 const router = jsonServer.router('db.json');
@@ -7,39 +8,32 @@ const middlewares = jsonServer.defaults();
 server.use(middlewares);
 server.use(jsonServer.bodyParser);
 
-// Custom query parameters mapping middleware
+// Re‑write '/api/*' → '/*' so the client can use /api/books
+server.use(jsonServer.rewriter({
+  '/api/*': '/$1',
+}));
+
+// ---------------------------------------------------------------
+// SINGLE, clean middleware – strips empty params and logs final query
+// ---------------------------------------------------------------
 server.use((req, res, next) => {
   if (req.method === 'GET' && (req.path === '/api/books' || req.path === '/books')) {
-    // Debug: show the incoming query parameters (including empty ones)
-    console.log('🔎 Middleware hit → path:', req.path, 'query:', req.query);
-    // Map custom query `search` to JSON Server full-text search `q`
-    // Always delete `search` param — if non-empty, map it to `q` first.
-    // If left as-is, JSON Server treats `search=` as a field filter and returns nothing.
+    // Map custom `search` to json-server full-text search `q`
     if (req.query.search) {
       req.query.q = req.query.search;
     }
-    delete req.query.search;
+    delete req.query.search; // remove empty/handled param
 
-    // Map custom query `search` to JSON Server full-text search `q`
-    // Always delete `search` param — if non-empty, map it to `q` first.
-    // If left as-is, JSON Server treats `search=` as a field filter and returns nothing.
-    if (req.query.search) {
-      req.query.q = req.query.search;
-    }
-    delete req.query.search;
-
-    // Handle 'All' genre by removing the genre filter so it returns all records
+    // Remove genre filter when "All" is selected
     if (req.query.genre === 'All') {
       delete req.query.genre;
     }
+
+    // Log the **final** query that json-server will see
+    console.log('🔎 Middleware final → path:', req.path, 'query:', req.query);
   }
   next();
 });
-
-// Re-write '/api/*' requests to '/*' to transparently match client expectations
-server.use(jsonServer.rewriter({
-  '/api/*': '/$1'
-}));
 
 // Route standard JSON Server requests
 server.use(router);

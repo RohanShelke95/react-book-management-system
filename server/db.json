@@ -49,12 +49,12 @@
       "cover_image": "https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&q=80&w=400"
     },
     {
-      "id": 7,
       "title": "Zero to One",
       "author": "Peter Thiel",
       "genre": "Business",
-      "publication_year": 2014,
-      "cover_image": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&q=80&w=400"
+      "publication_year": 2015,
+      "cover_image": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&q=80&w=400",
+      "id": 7
     },
     {
       "id": 8,
