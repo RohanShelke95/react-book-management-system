@@ -1,0 +1,68 @@
+{
+  "books": [
+    {
+      "id": 1,
+      "title": "The Great Gatsby",
+      "author": "F. Scott Fitzgerald",
+      "genre": "Classics",
+      "publication_year": 1925,
+      "cover_image": "https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&q=80&w=400"
+    },
+    {
+      "id": 2,
+      "title": "Deep Work",
+      "author": "Cal Newport",
+      "genre": "Education",
+      "publication_year": 2016,
+      "cover_image": "https://images.unsplash.com/photo-1589998059171-988d887df646?auto=format&fit=crop&q=80&w=400"
+    },
+    {
+      "id": 3,
+      "title": "Atomic Habits",
+      "author": "James Clear",
+      "genre": "Self-Help",
+      "publication_year": 2018,
+      "cover_image": "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&q=80&w=400"
+    },
+    {
+      "id": 4,
+      "title": "The Alchemist",
+      "author": "Paulo Coelho",
+      "genre": "Fiction",
+      "publication_year": 1988,
+      "cover_image": "https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&q=80&w=400"
+    },
+    {
+      "id": 5,
+      "title": "Milk and Honey",
+      "author": "Rupi Kaur",
+      "genre": "Poetry",
+      "publication_year": 2014,
+      "cover_image": "https://images.unsplash.com/photo-1474932430478-367dbb6832c1?auto=format&fit=crop&q=80&w=400"
+    },
+    {
+      "id": 6,
+      "title": "Start with Why",
+      "author": "Simon Sinek",
+      "genre": "Business",
+      "publication_year": 2009,
+      "cover_image": "https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&q=80&w=400"
+    },
+    {
+      "id": 7,
+      "title": "Zero to One",
+      "author": "Peter Thiel",
+      "genre": "Business",
+      "publication_year": 2014,
+      "cover_image": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&q=80&w=400"
+    },
+    {
+      "id": 8,
+      "title": "The Subtle Art of Not Giving a F*ck",
+      "author": "Mark Manson",
+      "genre": "Self-Help",
+      "publication_year": 2016,
+      "cover_image": "https://images.unsplash.com/photo-1541963463532-d68292c34b19?auto=format&fit=crop&q=80&w=400"
+    }
+  ]
+}

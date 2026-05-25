@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --primary: #4a3728;
+  --primary-light: #6d5442;
+  --accent: #d4a373;
+  --bg-light: #fdfaf5;
+  --card-bg: #ffffff;
+  --text-main: #2d241e;
+  --text-muted: #6b5b4e;
+  --border: #e9e2d9;
+  --success: #606c38;
+  --success-bg: #f0f4e8;
+  --error: #bc6c25;
+  --error-bg: #fdf2e9;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  --glass: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.4);
+  
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dark-mode {
+  --primary: #d4a373;
+  --primary-light: #faedcd;
+  --accent: #4a3728;
+  --bg-light: #1a1512;
+  --card-bg: #2d241e;
+  --text-main: #fdfaf5;
+  --text-muted: #a89a8e;
+  --border: #3d3229;
+  --glass: rgba(45, 36, 30, 0.7);
+  --glass-border: rgba(74, 55, 40, 0.3);
+  --shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background-color: var(--bg-light);
+  color: var(--text-main);
+  line-height: 1.6;
+  transition: var(--transition);
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: var(--transition);
+}
+
+input, select, textarea {
+  font-family: inherit;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  background: var(--card-bg);
+  color: var(--text-main);
+  transition: var(--transition);
+}
+
+input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(74, 55, 40, 0.1);
+}
+
+.glass-card {
+  background: var(--glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
