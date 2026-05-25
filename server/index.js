@@ -9,7 +9,17 @@ server.use(jsonServer.bodyParser);
 
 // Custom query parameters mapping middleware
 server.use((req, res, next) => {
-  if (req.method === 'GET' && req.path === '/api/books') {
+  if (req.method === 'GET' && (req.path === '/api/books' || req.path === '/books')) {
+    // Debug: show the incoming query parameters (including empty ones)
+    console.log('🔎 Middleware hit → path:', req.path, 'query:', req.query);
+    // Map custom query `search` to JSON Server full-text search `q`
+    // Always delete `search` param — if non-empty, map it to `q` first.
+    // If left as-is, JSON Server treats `search=` as a field filter and returns nothing.
+    if (req.query.search) {
+      req.query.q = req.query.search;
+    }
+    delete req.query.search;
+
     // Map custom query `search` to JSON Server full-text search `q`
     // Always delete `search` param — if non-empty, map it to `q` first.
     // If left as-is, JSON Server treats `search=` as a field filter and returns nothing.
