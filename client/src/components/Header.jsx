@@ -1,8 +1,7 @@
 import React from 'react';
-import { BookOpen, Plus } from 'lucide-react';
-import SearchBar from './SearchBar';
+import { BookOpen } from 'lucide-react';
 
-function Header({ searchQuery, setSearchQuery, onAddClick }) {
+function Header({ searchQuery, setSearchQuery, onAddClick, onSearchClick }) {
   return (
     <header className="header animate-fade-in">
       <div className="logo">
@@ -11,15 +10,24 @@ function Header({ searchQuery, setSearchQuery, onAddClick }) {
       </div>
 
       <div className="header-actions">
-        <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
-
+        <div className="search-wrapper">
+          <input
+            id="search-input"
+            type="text"
+            placeholder="Search by title or author..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+        </div>
+        {/* Search button */}
         <button className="btn-primary" onClick={onAddClick}>
-          <Plus size={18} />
           <span>Add Book</span>
         </button>
       </div>
     </header>
   );
 }
+
+
 
 export default Header;

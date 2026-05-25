@@ -1,11 +1,13 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import FilterBar from './components/FilterBar';
 import BookList from './components/BookList';
 import BookFormModal from './components/BookFormModal';
 import ErrorBanner from './components/ErrorBanner';
 import Loader from './components/Loader';
+
 import './App.css';
+
 
 const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 
@@ -32,26 +34,43 @@ function App() {
   const [showAddModal, setShowAddModal] = useState(false);
   const [editingBook, setEditingBook] = useState(null);
 
-  const fetchData = useCallback(async () => {
+  const fetchData = async () => {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch(`${API_BASE}/books?search=${searchQuery}&genre=${selectedGenre}`);
+      const urlBase = `${API_BASE}/books`;
+      const params = new URLSearchParams();
+
+      const trimmed = searchQuery.trim();
+      if (trimmed) params.append('search', trimmed);
+
+      if (selectedGenre && selectedGenre !== 'All')
+        params.append('genre', selectedGenre);
+
+      const url = params.toString()
+        ? `${urlBase}?${params.toString()}`
+        : urlBase;
+
+      console.log('🔍 Fetching URL →', url);
+      const response = await fetch(url);
       if (!response.ok) throw new Error('Failed to load books');
       const booksData = await response.json();
       setBooks(booksData);
-      console.log('🟢 Fetched books →', booksData);
+
     } catch (err) {
       console.error('Error fetching data:', err);
-      setError('Could not connect to the database API. Make sure the backend server is running.');
+      setError(
+        'Could not connect to the database API. Make sure the backend server is running.'
+      );
     } finally {
       setLoading(false);
     }
-  }, [searchQuery, selectedGenre]);
+  };
+
 
   useEffect(() => {
     fetchData();
-  }, [fetchData]);
+  }, [searchQuery, selectedGenre]);
 
   const handleSubmit = async (formData) => {
     try {
@@ -96,12 +115,18 @@ function App() {
     setShowAddModal(true);
   };
 
+  const handleSearchClick = () => {
+    const input = document.getElementById('search-input');
+    if (input) input.focus();
+  };
+
   return (
     <div className="app-container">
       <Header
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
         onAddClick={handleAddClick}
+        onSearchClick={fetchData}
       />
 
       <main className="content">
