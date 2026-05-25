@@ -40,6 +40,7 @@ function App() {
       if (!response.ok) throw new Error('Failed to load books');
       const booksData = await response.json();
       setBooks(booksData);
+      console.log('🟢 Fetched books →', booksData);
     } catch (err) {
       console.error('Error fetching data:', err);
       setError('Could not connect to the database API. Make sure the backend server is running.');
