@@ -11,10 +11,13 @@ server.use(jsonServer.bodyParser);
 server.use((req, res, next) => {
   if (req.method === 'GET' && req.path === '/api/books') {
     // Map custom query `search` to JSON Server full-text search `q`
+    // Always delete `search` param — if non-empty, map it to `q` first.
+    // If left as-is, JSON Server treats `search=` as a field filter and returns nothing.
     if (req.query.search) {
       req.query.q = req.query.search;
-      delete req.query.search;
     }
+    delete req.query.search;
+
     // Handle 'All' genre by removing the genre filter so it returns all records
     if (req.query.genre === 'All') {
       delete req.query.genre;
