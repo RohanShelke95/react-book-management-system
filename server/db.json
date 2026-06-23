@@ -1,12 +1,15 @@
 {
   "books": [
     {
-      "id": 1,
       "title": "The Great Gatsby",
       "author": "F. Scott Fitzgerald",
       "genre": "Classics",
       "publication_year": 1925,
-      "cover_image": "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&q=80&w=400"
+      "cover_image": "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&q=80&w=400",
+      "status": "Borrowed",
+      "rating": 4,
+      "date_added": "03/15/2026",
+      "id": 1
     },
     {
       "id": 2,
@@ -14,7 +17,10 @@
       "author": "Cal Newport",
       "genre": "Education",
       "publication_year": 2016,
-      "cover_image": "https://images.unsplash.com/photo-1589998059171-988d887df646?auto=format&fit=crop&q=80&w=400"
+      "cover_image": "https://images.unsplash.com/photo-1589998059171-988d887df646?auto=format&fit=crop&q=80&w=400",
+      "status": "On Shelf",
+      "rating": 4,
+      "date_added": "04/02/2026"
     },
     {
       "id": 3,
@@ -22,7 +28,10 @@
       "author": "James Clear",
       "genre": "Self-Help",
       "publication_year": 2018,
-      "cover_image": "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&q=80&w=400"
+      "cover_image": "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&q=80&w=400",
+      "status": "Borrowed",
+      "rating": 5,
+      "date_added": "01/18/2026"
     },
     {
       "id": 4,
@@ -30,7 +39,10 @@
       "author": "Paulo Coelho",
       "genre": "Fiction",
       "publication_year": 1988,
-      "cover_image": "https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&q=80&w=400"
+      "cover_image": "https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&q=80&w=400",
+      "status": "On Shelf",
+      "rating": 5,
+      "date_added": "02/22/2026"
     },
     {
       "id": 5,
@@ -38,7 +50,10 @@
       "author": "Rupi Kaur",
       "genre": "Poetry",
       "publication_year": 2014,
-      "cover_image": "https://images.unsplash.com/photo-1474932430478-367dbb6832c1?auto=format&fit=crop&q=80&w=400"
+      "cover_image": "https://images.unsplash.com/photo-1474932430478-367dbb6832c1?auto=format&fit=crop&q=80&w=400",
+      "status": "Borrowed",
+      "rating": 3,
+      "date_added": "05/11/2026"
     },
     {
       "id": 6,
@@ -46,15 +61,21 @@
       "author": "Simon Sinek",
       "genre": "Business",
       "publication_year": 2009,
-      "cover_image": "https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&q=80&w=400"
+      "cover_image": "https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&q=80&w=400",
+      "status": "On Shelf",
+      "rating": 4,
+      "date_added": "06/01/2026"
     },
     {
+      "id": 7,
       "title": "Zero to One",
       "author": "Peter Thiel",
       "genre": "Business",
       "publication_year": 2015,
       "cover_image": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&q=80&w=400",
-      "id": 7
+      "status": "On Shelf",
+      "rating": 4,
+      "date_added": "05/20/2026"
     },
     {
       "id": 8,
@@ -62,7 +83,10 @@
       "author": "Mark Manson",
       "genre": "Self-Help",
       "publication_year": 2016,
-      "cover_image": "https://images.unsplash.com/photo-1541963463532-d68292c34b19?auto=format&fit=crop&q=80&w=400"
+      "cover_image": "https://images.unsplash.com/photo-1541963463532-d68292c34b19?auto=format&fit=crop&q=80&w=400",
+      "status": "Borrowed",
+      "rating": 4,
+      "date_added": "02/10/2026"
     }
   ]
 }

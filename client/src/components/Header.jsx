@@ -31,3 +31,4 @@ function Header({ searchQuery, setSearchQuery, onAddClick, onSearchClick }) {
 
 
 export default Header;
+

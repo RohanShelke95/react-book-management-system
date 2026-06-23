@@ -1,25 +1,83 @@
 import React from 'react';
-import { Filter } from 'lucide-react';
+import { Search } from 'lucide-react';
 
-function FilterBar({ selectedGenre, setSelectedGenre, genres }) {
+function FilterBar({ 
+  searchQuery, 
+  setSearchQuery, 
+  selectedGenre, 
+  setSelectedGenre, 
+  genres,
+  selectedStatus,
+  setSelectedStatus,
+  selectedAuthor,
+  setSelectedAuthor,
+  authors,
+  onResetFilters
+}) {
   return (
-    <section className="filters-row animate-fade-in" style={{ animationDelay: '0.1s' }}>
-      <div className="filter-title">
-        <Filter size={14} />
-        <span>Genre:</span>
-      </div>
-      <div className="filter-buttons">
-        {genres.map(g => (
-          <button
-            key={g}
-            className={`filter-btn ${selectedGenre === g ? 'active' : ''}`}
-            onClick={() => setSelectedGenre(g)}
-          >
-            {g}
+    <aside className="filters-panel">
+      <h3>Filters</h3>
+
+      <div className="filter-group">
+        <label htmlFor="search-input">Search Title/Author</label>
+        <div className="search-input-wrapper">
+          <input
+            id="search-input"
+            type="text"
+            placeholder="Search books..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+          <button className="btn-search-trigger" aria-label="Search">
+            <Search size={18} />
           </button>
-        ))}
+        </div>
       </div>
-    </section>
+
+      <div className="filter-group">
+        <label htmlFor="genre-select">Genre</label>
+        <select
+          id="genre-select"
+          value={selectedGenre}
+          onChange={(e) => setSelectedGenre(e.target.value)}
+        >
+          {genres.map(g => (
+            <option key={g} value={g}>{g}</option>
+          ))}
+        </select>
+      </div>
+
+      <div className="filter-group">
+        <label htmlFor="status-select">Status</label>
+        <select
+          id="status-select"
+          value={selectedStatus}
+          onChange={(e) => setSelectedStatus(e.target.value)}
+        >
+          <option value="All">All Statuses</option>
+          <option value="On Shelf">On Shelf</option>
+          <option value="Borrowed">Borrowed</option>
+        </select>
+      </div>
+
+      <div className="filter-group">
+        <label htmlFor="author-select">Author</label>
+        <select
+          id="author-select"
+          value={selectedAuthor}
+          onChange={(e) => setSelectedAuthor(e.target.value)}
+        >
+          <option value="All">All Authors</option>
+          {authors.map(author => (
+            <option key={author} value={author}>{author}</option>
+          ))}
+        </select>
+      </div>
+
+      <button className="btn-reset-filters" onClick={onResetFilters}>
+        Reset All Filters
+      </button>
+    </aside>
   );
 }
 
