@@ -139,7 +139,9 @@ app.delete('/api/books/:id', async (req, res) => {
   }
 });
 
-if (process.env.NODE_ENV !== 'production') {
+// Start server when run directly (local dev or Render)
+// When imported by Vercel serverless, this block is skipped
+if (require.main === module) {
   app.listen(PORT, () => {
     console.log(`Express Server with MySQL is running on port ${PORT}`);
   });
