@@ -5,10 +5,12 @@ async function initialize() {
   console.log('Starting database initialization...');
   
   // Connect without database to create it if it doesn't exist
+  require('dotenv').config();
   const connection = await mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'Rohan@12'
+    host: process.env.DB_HOST || 'localhost',
+    user: process.env.DB_USER || 'root',
+    password: process.env.DB_PASSWORD || 'Rohan@12',
+    port: process.env.DB_PORT || 3306
   });
 
   try {
