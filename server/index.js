@@ -138,6 +138,11 @@ app.delete('/api/books/:id', async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`Express Server with MySQL is running on port ${PORT}`);
-});
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, () => {
+    console.log(`Express Server with MySQL is running on port ${PORT}`);
+  });
+}
+
+// Export for Vercel serverless
+module.exports = app;
